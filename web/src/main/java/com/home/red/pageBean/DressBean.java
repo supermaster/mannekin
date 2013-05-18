@@ -14,6 +14,8 @@ import java.util.List;
 public class DressBean implements Serializable {
     private List<DressCategory> dressCategories;
 
+    private String[] sizes = {"S", "M", "L", "XL", "XXL"};
+
     private Clothes selectedClothes;
 
     public DressBean() {
@@ -59,5 +61,9 @@ public class DressBean implements Serializable {
 
     public void setSelectedClothes(Clothes selectedClothes) {
         this.selectedClothes = selectedClothes;
+    }
+
+    public String[] getSizes() {
+        return sizes;
     }
 }

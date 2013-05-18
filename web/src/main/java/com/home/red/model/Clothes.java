@@ -1,5 +1,7 @@
 package com.home.red.model;
 
+import java.util.List;
+
 public class Clothes {
     public Clothes(String label, String image) {
         this.label = label;
@@ -8,6 +10,8 @@ public class Clothes {
 
     private String label;
     private String image;
+    private int price;
+    private String size;
 
 
     public String getLabel() {
@@ -24,5 +28,21 @@ public class Clothes {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }
