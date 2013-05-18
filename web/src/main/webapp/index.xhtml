@@ -1,56 +1,79 @@
 <ui:composition template="/templates/masterLayout.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="windowTitle">
-        #{msgs.home}
+        #{msgs.siteTitle}
     </ui:define>
 
     <ui:define name="content">
-        <div id="content">
-            <h1>#{msgs.home}</h1>
-            <blockquote>Сервис предназначен для подбора одежды онлайн с помощью виртуального манекена
-            </blockquote>
+        <table id="mainContent">
+            <tr>
+                <!--Столбец с одеждой-->
+                <td id="choose_dress" class="content_td">
 
-            <p>
-                <!--<img class="myborder" align="left" hspace="10" src="img/maneken_01.jpg" alt="image here"-->
-                    <!--title="image here"/>-->
-                <h:graphicImage url="img/maneken_01.jpg" styleClass="myborder"/>
+                    <p:accordionPanel value="#{dressBean.dressCategories}" var="category" multiple="true">
+                        <p:tab title="#{category.label}">
 
-            </p>
 
-        </div>
-        <div id="side">
-            <h1>Links</h1>
+                            <ui:repeat value="#{category.clothesList}" var="clothesItem">
+                                <h:panelGrid columns="2">
+                                    <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}.jpg"/>
+                                    <h:outputText value="#{clothesItem.label}"/>
+                                </h:panelGrid>
 
-            <div id="navcontainer">
-                <ul id="side-nav">
-                    <li><a href="http://web-mastery.info/">Open Designs</a></li>
-                    <li><a href="http://web-mastery.info/">CSS Drive</a></li>
-                    <li><a href="http://web-mastery.info/">Style Gala</a></li>
-                    <li><a href="http://web-mastery.info/">Listamatic</a></li>
-                </ul>
-                <h1>News</h1>
+                            </ui:repeat>
 
-                <div class="scroll">
-                    <h2>January 1st 2006</h2>
 
-                    <p class="news">HAPPY NEW YEAR. Use this space as a mini weblog maybe .....</p>
+                        </p:tab>
+                    </p:accordionPanel>
 
-                    <h2>Sept 25th 2005</h2>
+                </td>
 
-                    <p class="news">or maybe not!</p>
-                </div>
-            </div>
-            <h1>More Links</h1>
+                <!--Столбец с самим манекеном-->
+                <td id="maneken" class="content_td">
 
-            <div class="more-links">
-                <ul>
-                    <li><a href="http://web-mastery.info/">OWD</a></li>
-                    <li><a href="http://web-mastery.info/">CSS Drive</a></li>
-                    <li><a href="http://web-mastery.info/">CSS Library</a></li>
-                </ul>
-            </div>
-        </div>
+                </td>
+
+                <!--Столбец с размерами-->
+                <td id="sizes" class="content_td">
+                    <h3>Укажите ваши размеры в сантиметрах</h3>
+                    <h:panelGroup>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">
+                            <h:outputText value="#{msgs.height}"/>
+                            <p:inputText id="height" value="#{user.height}"/>
+                            <p:slider for="height" minValue="100" maxValue="250"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">
+                            <h:outputText value="#{msgs.siski}"/>
+                            <p:inputText id="siski" value="#{user.siski}"/>
+                            <p:slider for="siski" minValue="50" maxValue="200"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">
+                            <h:outputText value="#{msgs.puzo}"/>
+                            <p:inputText id="puzo" value="#{user.puzo}"/>
+                            <p:slider for="puzo" minValue="30" maxValue="200"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <h:panelGrid columns="1" style="margin-bottom:10px">
+                            <h:outputText value="#{msgs.zhopa}"/>
+                            <p:inputText id="zhopa" value="#{user.zhopa}"/>
+                            <p:slider for="zhopa" minValue="50" maxValue="200"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                </td>
+
+            </tr>
+        </table>
+
     </ui:define>
 </ui:composition>
