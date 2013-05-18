@@ -1,0 +1,64 @@
+<ui:composition template="/templates/masterLayout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="windowTitle">
+        <h:outputText value=""/>
+        #{msgs.home}
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="content">
+            <h1>Welcome to <span style="font-weight:bold; color:#C4DA64;">Autumn</span> Template</h1>
+            <blockquote>This template has been tested in Mozilla and IE6/7 and validates as XHTML 1.0 Transitional using valid CSS.<br/>
+                For more FREE templates visit my website.
+            </blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur mi. Sed interdum. Nam facilisis dui a nisi. Phasellus euismod augue quis erat. This is a
+                <a href="http://web-mastery.info/">LINK</a> to nowhere. Nunc libero libero, lobortis ut, placerat vel, dapibus eu, nisl. Fusce a nisi sed urna aliquet molestie. Aenean pretium, orci vitae lobortis rutrum, magna arcu pulvinar elit, id suscipit nunc tellus in felis.
+            </p>
+
+            <div style="float: right; width: 125px; height: 7em; margin: 15px; font-family: georgia, arial, helvetica; font-size: 16px; font-weight:normal; line-height: 22px; color: #cc9933; text-align: right;">
+                <span style="color:#663300;">"...autumn is a second </span>spring when every <span
+                    style="color: #C86000;">leaf is a flower... "</span></div>
+            <p>Sed interdum. Nam facilisis dui a nisi. Phasellus euismod augue quis erat. Nunc libero libero, lobortis ut, placerat vel, dapibus eu, nisl. Fusce a nisi sed urna aliquet molestie. Aenean pretium, orci vitae lobortis rutrum, magna arcu pulvinar elit, id suscipit nunc tellus in felis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur mi. Sed interdum. Nam facilisis dui a nisi. Phasellus euismod augue quis erat.</p>
+
+            <h1>About</h1>
+
+            <p><img class="myborder" align="left" hspace="10" src="img/square.gif" alt="image here"
+                    title="image here"/> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur mi. Sed interdum. Nam facilisis dui a nisi. Phasellus euismod augue quis erat. Nunc libero libero, lobortis ut, placerat vel, dapibus eu, nisl. Fusce a nisi sed urna aliquet molestie. Aenean pretium, orci vitae lobortis rutrum, magna arcu pulvinar elit, id suscipit nunc tellus in felis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur mi. Sed interdum. Nam facilisis dui a nisi. Phasellus euismod augue quis erat. Nunc libero libero, lobortis ut, placerat vel, dapibus eu, nisl. Fusce a nisi sed urna aliquet molestie. Aenean pretium, orci vitae lobortis rutrum, magna arcu pulvinar elit, id suscipit nunc tellus in felis.
+            </p>
+        </div>
+        <div id="side">
+            <h1>Links</h1>
+
+            <div id="navcontainer">
+                <ul id="side-nav">
+                    <li><a href="http://web-mastery.info/">Open Designs</a></li>
+                    <li><a href="http://web-mastery.info/">CSS Drive</a></li>
+                    <li><a href="http://web-mastery.info/">Style Gala</a></li>
+                    <li><a href="http://web-mastery.info/">Listamatic</a></li>
+                </ul>
+                <h1>News</h1>
+
+                <div class="scroll">
+                    <h2>January 1st 2006</h2>
+
+                    <p class="news">HAPPY NEW YEAR. Use this space as a mini weblog maybe .....</p>
+
+                    <h2>Sept 25th 2005</h2>
+
+                    <p class="news">or maybe not!</p>
+                </div>
+            </div>
+            <h1>More Links</h1>
+
+            <div class="more-links">
+                <ul>
+                    <li><a href="http://web-mastery.info/">OWD</a></li>
+                    <li><a href="http://web-mastery.info/">CSS Drive</a></li>
+                    <li><a href="http://web-mastery.info/">CSS Library</a></li>
+                </ul>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
