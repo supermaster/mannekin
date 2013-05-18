@@ -1,4 +1,4 @@
-package com.home.red;
+package com.home.red.model;
 
 public class Clothes {
     public Clothes(String label, String image) {

@@ -8,72 +8,44 @@
     </ui:define>
 
     <ui:define name="content">
-        <table id="mainContent">
-            <tr>
-                <!--Столбец с одеждой-->
-                <td id="choose_dress" class="content_td">
+        <div style="margin: auto; width: 300px">
+            <h:form>
 
-                    <p:accordionPanel value="#{dressBean.dressCategories}" var="category" multiple="true">
-                        <p:tab title="#{category.label}">
+                <h3>Укажите ваши размеры в сантиметрах</h3>
+                <h:panelGroup>
+                    <h:panelGrid columns="1" style="margin-bottom:10px">
+                        <h:outputText value="#{msgs.height}"/>
+                        <p:inputText id="height" value="#{user.height}"/>
+                        <p:slider for="height" minValue="100" maxValue="250"/>
+                    </h:panelGrid>
+                </h:panelGroup>
 
+                <h:panelGroup>
+                    <h:panelGrid columns="1" style="margin-bottom:10px">
+                        <h:outputText value="#{msgs.siski}"/>
+                        <p:inputText id="siski" value="#{user.siski}"/>
+                        <p:slider for="siski" minValue="50" maxValue="200"/>
+                    </h:panelGrid>
+                </h:panelGroup>
 
-                            <ui:repeat value="#{category.clothesList}" var="clothesItem">
-                                <h:panelGrid columns="2">
-                                    <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}.jpg"/>
-                                    <h:outputText value="#{clothesItem.label}"/>
-                                </h:panelGrid>
+                <h:panelGroup>
+                    <h:panelGrid columns="1" style="margin-bottom:10px">
+                        <h:outputText value="#{msgs.puzo}"/>
+                        <p:inputText id="puzo" value="#{user.puzo}"/>
+                        <p:slider for="puzo" minValue="30" maxValue="200"/>
+                    </h:panelGrid>
+                </h:panelGroup>
 
-                            </ui:repeat>
+                <h:panelGroup>
+                    <h:panelGrid columns="1" style="margin-bottom:10px">
+                        <h:outputText value="#{msgs.zhopa}"/>
+                        <p:inputText id="zhopa" value="#{user.zhopa}"/>
+                        <p:slider for="zhopa" minValue="50" maxValue="200"/>
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:commandButton value="#{msgs.next}" action="choose_clothes"/>
 
-
-                        </p:tab>
-                    </p:accordionPanel>
-
-                </td>
-
-                <!--Столбец с самим манекеном-->
-                <td id="maneken" class="content_td">
-
-                </td>
-
-                <!--Столбец с размерами-->
-                <td id="sizes" class="content_td">
-                    <h3>Укажите ваши размеры в сантиметрах</h3>
-                    <h:panelGroup>
-                        <h:panelGrid columns="1" style="margin-bottom:10px">
-                            <h:outputText value="#{msgs.height}"/>
-                            <p:inputText id="height" value="#{user.height}"/>
-                            <p:slider for="height" minValue="100" maxValue="250"/>
-                        </h:panelGrid>
-                    </h:panelGroup>
-
-                    <h:panelGroup>
-                        <h:panelGrid columns="1" style="margin-bottom:10px">
-                            <h:outputText value="#{msgs.siski}"/>
-                            <p:inputText id="siski" value="#{user.siski}"/>
-                            <p:slider for="siski" minValue="50" maxValue="200"/>
-                        </h:panelGrid>
-                    </h:panelGroup>
-
-                    <h:panelGroup>
-                        <h:panelGrid columns="1" style="margin-bottom:10px">
-                            <h:outputText value="#{msgs.puzo}"/>
-                            <p:inputText id="puzo" value="#{user.puzo}"/>
-                            <p:slider for="puzo" minValue="30" maxValue="200"/>
-                        </h:panelGrid>
-                    </h:panelGroup>
-
-                    <h:panelGroup>
-                        <h:panelGrid columns="1" style="margin-bottom:10px">
-                            <h:outputText value="#{msgs.zhopa}"/>
-                            <p:inputText id="zhopa" value="#{user.zhopa}"/>
-                            <p:slider for="zhopa" minValue="50" maxValue="200"/>
-                        </h:panelGrid>
-                    </h:panelGroup>
-                </td>
-
-            </tr>
-        </table>
-
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>

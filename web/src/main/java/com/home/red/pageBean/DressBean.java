@@ -1,4 +1,7 @@
-package com.home.red;
+package com.home.red.pageBean;
+
+import com.home.red.model.Clothes;
+import com.home.red.model.DressCategory;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,27 +21,26 @@ public class DressBean implements Serializable {
 
         List<Clothes> clothesList = new ArrayList<Clothes>();
 
-        clothesList.add(new Clothes("Кепка", "hat"));
-        clothesList.add(new Clothes("Шапка", "hat"));
-        clothesList.add(new Clothes("Шлем", "hat"));
-        dressCategories.add(new DressCategory("Головные уборы", clothesList));
+        clothesList.add(new Clothes("Jacket", "hat"));
+        clothesList.add(new Clothes("Coat", "hat"));
+        dressCategories.add(new DressCategory("Jackets & Coats", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("Майка", "hat"));
-        clothesList.add(new Clothes("Кофта", "hat"));
-        clothesList.add(new Clothes("пиджак", "hat"));
-        dressCategories.add(new DressCategory("Верхняя одежда", clothesList));
+        clothesList.add(new Clothes("TREND", "hat"));
+        clothesList.add(new Clothes("L.O.G.G.", "hat"));
+        clothesList.add(new Clothes("DIVIDED", "hat"));
+        dressCategories.add(new DressCategory("Shirts", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("Трусы", "hat"));
-        clothesList.add(new Clothes("Носки", "hat"));
-        dressCategories.add(new DressCategory("Нижнее белье", clothesList));
+        clothesList.add(new Clothes("Jumper", "hat"));
+        clothesList.add(new Clothes("Cardigan", "hat"));
+        dressCategories.add(new DressCategory("Jumpers & Cardigans", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("Тапки", "hat"));
-        clothesList.add(new Clothes("Валенки", "hat"));
-        clothesList.add(new Clothes("Лыжи", "hat"));
-        dressCategories.add(new DressCategory("Обувь", clothesList));
+        clothesList.add(new Clothes("Slim fit", "hat"));
+        clothesList.add(new Clothes("Spooky", "hat"));
+        clothesList.add(new Clothes("Skinny", "hat"));
+        dressCategories.add(new DressCategory("Jeans", clothesList));
     }
 
 

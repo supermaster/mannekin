@@ -1,4 +1,4 @@
-package com.home.red;
+package com.home.red.model;
 
 
 import java.util.List;
@@ -12,10 +12,6 @@ public class DressCategory {
     private String label;
 
     private List<Clothes> clothesList;
-
-
-
-
 
     public String getLabel() {
         return label;

@@ -1,4 +1,4 @@
-package com.home.red;
+package com.home.red.pageBean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
