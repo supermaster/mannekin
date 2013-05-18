@@ -19,14 +19,14 @@
 
 
                             <ui:repeat value="#{category.clothesList}" var="clothesItem">
-                                <div class="likeLink" onclick="alert('!!!')">
-                                <h:panelGrid columns="1">
-                                    <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
-                                    <h:outputText value="#{clothesItem.label}"/>
-                                </h:panelGrid>
-                                <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}.png" style="display: none"/>
-                                <h:outputText value="Price: $100"/>
-                                <br/><br/>
+                                <div class="likeLink" onclick="dressGirl('#{clothesItem.image}', '#{category.label}')">
+                                    <h:panelGrid columns="1">
+                                        <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
+                                        <h:outputText value="#{clothesItem.label}"/>
+                                    </h:panelGrid>
+
+                                    <h:outputText value="Price: $100"/>
+                                    <br/><br/>
                                 </div>
                             </ui:repeat>
 
@@ -39,7 +39,19 @@
                 <!--Столбец с самим манекеном-->
                 <td id="maneken" class="content_td" style="text-align: center; width: 570px; height: 700px">
 
-                    <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"/>
+                    <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"
+                                    style="position: absolute; left: 500px; top:100px;"/>
+
+                    <!--СКРЫТЫЕ ШМОТКИ!!!-->
+                    <ui:repeat value="#{dressBean.dressCategories}" var="item">
+                        <ui:repeat value="#{item.clothesList}" var="cloth">
+                            <h:graphicImage url="/resources/img/clothes/#{cloth.image}.png"
+                                            styleClass="#{item.label}"
+                                            style="display: none; position: absolute; left: 500px; top:100px;"
+                                            width="260" height="679"/>
+                        </ui:repeat>
+
+                    </ui:repeat>
 
 
                 </td>
@@ -104,10 +116,37 @@
         <!--</p:dialog>-->
 
 
+        <h:inputHidden id="shirtPuttedOn" value="false"/>
+        <h:inputHidden id="jeansPuttedOn" value="false"/>
+        <h:inputHidden id="coatPuttedOn" value="false"/>
+
         <script type="text/javascript">
             $(document).ready(function () {
                 dlg.show();
             });
+
+            function dressGirl(clothesName, category) {
+                checkCategory(category, "Shirts", "shirtPuttedOn");
+                checkCategory(category, "Jeans", "jeansPuttedOn");
+                checkCategory(category, "Coats", "coatPuttedOn");
+                $("img[src$='" + clothesName + ".png']").show();
+
+            }
+
+
+            function checkCategory(category, categoryname, hiddenFieldName) {
+
+                if (category == categoryname) {
+                    if ($("#" + hiddenFieldName).val() == "true") {
+                        $("." + categoryname).each(function (i, obj) {
+                            $(this).hide();
+                        });
+                    }
+                    else {
+                        $("#" + hiddenFieldName).val("true");
+                    }
+                }
+            }
         </script>
     </ui:define>
 </ui:composition>

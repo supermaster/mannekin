@@ -22,28 +22,22 @@ public class DressBean implements Serializable {
         this.dressCategories = new ArrayList<DressCategory>();
 
         List<Clothes> clothesList = new ArrayList<Clothes>();
-
-        clothesList.add(new Clothes("blue_coat", "blue_coat"));
-        clothesList.add(new Clothes("white_coat", "white_coat"));
-        clothesList.add(new Clothes("yellow_coat", "yellow_coat"));
-        dressCategories.add(new DressCategory("Jackets & Coats", clothesList));
-
-        clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("TREND", "hat"));
-        clothesList.add(new Clothes("L.O.G.G.", "hat"));
-        clothesList.add(new Clothes("DIVIDED", "hat"));
+        clothesList.add(new Clothes("GreenShirt", "green_shirt"));
+        clothesList.add(new Clothes("WhiteShirt", "white_shirt"));
+        clothesList.add(new Clothes("RedShirt", "red_shirt"));
         dressCategories.add(new DressCategory("Shirts", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("Jumper", "hat"));
-        clothesList.add(new Clothes("Cardigan", "hat"));
-        dressCategories.add(new DressCategory("Jumpers & Cardigans", clothesList));
+        clothesList.add(new Clothes("BlueJeans", "blue_jeans"));
+        clothesList.add(new Clothes("BlueSkirt", "blue_skirt"));
+        clothesList.add(new Clothes("PurpleJeans", "purple_jeans"));
+        dressCategories.add(new DressCategory("Jeans", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("Slim fit", "hat"));
-        clothesList.add(new Clothes("Spooky", "hat"));
-        clothesList.add(new Clothes("Skinny", "hat"));
-        dressCategories.add(new DressCategory("Jeans", clothesList));
+        clothesList.add(new Clothes("BlueCoat", "blue_coat"));
+        clothesList.add(new Clothes("WhiteCoat", "white_coat"));
+        clothesList.add(new Clothes("YellowCoat", "yellow_coat"));
+        dressCategories.add(new DressCategory("Coats", clothesList));
     }
 
 
