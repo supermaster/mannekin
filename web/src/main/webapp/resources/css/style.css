@@ -20,6 +20,10 @@ body {
     width: 25%;
 }
 
+.likeLink{
+    cursor: pointer;
+}
+
 .content_td {
     padding: 5px; /* Поля вокруг текста */
     border: 1px solid #8c9e18; /* Рамка вокруг ячеек */
