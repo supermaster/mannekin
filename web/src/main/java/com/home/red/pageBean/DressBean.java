@@ -21,8 +21,9 @@ public class DressBean implements Serializable {
 
         List<Clothes> clothesList = new ArrayList<Clothes>();
 
-        clothesList.add(new Clothes("Jacket", "hat"));
-        clothesList.add(new Clothes("Coat", "hat"));
+        clothesList.add(new Clothes("blue_coat", "blue_coat"));
+        clothesList.add(new Clothes("white_coat", "white_coat"));
+        clothesList.add(new Clothes("yellow_coat", "yellow_coat"));
         dressCategories.add(new DressCategory("Jackets & Coats", clothesList));
 
         clothesList = new ArrayList<Clothes>();

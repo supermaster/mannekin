@@ -19,14 +19,15 @@
 
 
                             <ui:repeat value="#{category.clothesList}" var="clothesItem">
-                                <h:panelGrid columns="2">
-
-
-                                    <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}.jpg"
-                                                    styleClass="likeLink"/>
-                                    <h:outputText value="#{clothesItem.label}" styleClass="likeLink"/>
+                                <div class="likeLink" onclick="alert('!!!')">
+                                <h:panelGrid columns="1">
+                                    <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
+                                    <h:outputText value="#{clothesItem.label}"/>
                                 </h:panelGrid>
-
+                                <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}.png" style="display: none"/>
+                                <h:outputText value="Price: $100"/>
+                                <br/><br/>
+                                </div>
                             </ui:repeat>
 
 
@@ -38,7 +39,7 @@
                 <!--Столбец с самим манекеном-->
                 <td id="maneken" class="content_td" style="text-align: center; width: 570px; height: 700px">
 
-                    <h:graphicImage url="/resources/img/empty_model.png" width="260" height="679"/>
+                    <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"/>
 
 
                 </td>
