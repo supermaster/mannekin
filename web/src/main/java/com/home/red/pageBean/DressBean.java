@@ -11,7 +11,7 @@ import java.util.List;
 
 @ManagedBean(name = "dressBean")
 @SessionScoped
-public class DressBean implements Serializable {
+public class    DressBean implements Serializable {
     private List<DressCategory> dressCategories;
 
     private String[] sizes = {"S", "M", "L", "XL", "XXL"};

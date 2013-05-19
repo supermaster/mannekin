@@ -7,8 +7,9 @@ body {
 }
 
 #mainContent{
-    width: 100%;
+    width: 90%;
     height: 550px;
+    position: absolute;
     /*border: 1px solid;*/
 }
 
@@ -17,7 +18,11 @@ body {
 }
 
 #total {
-    width: 25%;
+    width: 200px;
+    position: absolute;
+    margin: 10px;
+    right: 70px;
+
 }
 
 .likeLink{

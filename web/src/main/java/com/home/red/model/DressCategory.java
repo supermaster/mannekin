@@ -1,9 +1,10 @@
 package com.home.red.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DressCategory {
+public class DressCategory implements Serializable{
     public DressCategory(String label, List<Clothes> clothesList) {
         this.label = label;
         this.clothesList = clothesList;

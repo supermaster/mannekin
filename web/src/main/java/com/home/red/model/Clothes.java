@@ -4,8 +4,14 @@ import java.util.List;
 
 public class Clothes {
     public Clothes(String label, String image) {
+        this(label, image, 0, "S");
+    }
+
+    public Clothes(String label, String image, int price, String size) {
         this.label = label;
         this.image = image;
+        this.price = price;
+        this.size = size;
     }
 
     private String label;

@@ -3,150 +3,75 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <ui:define name="windowTitle">
         #{msgs.siteTitle}
     </ui:define>
 
     <ui:define name="content">
-        <table id="mainContent">
-            <tr>
-                <!--Столбец с одеждой-->
-                <td id="choose_dress" class="content_td">
-
-                    <p:accordionPanel value="#{dressBean.dressCategories}" var="category" multiple="true">
-                        <p:tab title="#{category.label}">
 
 
-                            <ui:repeat value="#{category.clothesList}" var="clothesItem">
-                                <div class="likeLink" onclick="dressGirl('#{clothesItem.image}', '#{category.label}')">
-                                    <h:panelGrid columns="1">
-                                        <h:graphicImage url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
-                                        <h:outputText value="#{clothesItem.label}"/>
-                                    </h:panelGrid>
-
-                                    <h:outputText value="Price: $100"/>
-                                    <br/><br/>
-                                </div>
-                            </ui:repeat>
 
 
-                        </p:tab>
-                    </p:accordionPanel>
+            <!--<p:commandButton id="showDialogButton" type="button" value="#{msgs.chooseSizes}" onclick="dlg.show()"/>-->
+            <p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false">
+                <h:form id="form">
+                    <div style="margin: auto; width: 300px">
+                        <div>
 
-                </td>
+                            <h3>Укажите ваши размеры в сантиметрах</h3>
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" style="margin-bottom:10px">
+                                    <h:outputText value="#{msgs.height}"/>
+                                    <p:inputText id="height" value="#{user.height}"/>
+                                    <p:slider for="height" minValue="100" maxValue="250"/>
+                                </h:panelGrid>
+                            </h:panelGroup>
 
-                <!--Столбец с самим манекеном-->
-                <td id="maneken" class="content_td" style="text-align: center; width: 570px; height: 700px">
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" style="margin-bottom:10px">
+                                    <h:outputText value="#{msgs.siski}"/>
+                                    <p:inputText id="siski" value="#{user.siski}"/>
+                                    <p:slider for="siski" minValue="50" maxValue="200"/>
+                                </h:panelGrid>
+                            </h:panelGroup>
 
-                    <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"
-                                    style="position: absolute; left: 500px; top:100px;"/>
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" style="margin-bottom:10px">
+                                    <h:outputText value="#{msgs.puzo}"/>
+                                    <p:inputText id="puzo" value="#{user.puzo}"/>
+                                    <p:slider for="puzo" minValue="30" maxValue="200"/>
+                                </h:panelGrid>
+                            </h:panelGroup>
 
-                    <!--СКРЫТЫЕ ШМОТКИ!!!-->
-                    <ui:repeat value="#{dressBean.dressCategories}" var="item">
-                        <ui:repeat value="#{item.clothesList}" var="cloth">
-                            <h:graphicImage url="/resources/img/clothes/#{cloth.image}.png"
-                                            styleClass="#{item.label}"
-                                            style="display: none; position: absolute; left: 500px; top:100px;"
-                                            width="260" height="679"/>
-                        </ui:repeat>
-
-                    </ui:repeat>
-
-
-                </td>
-
-                <!--Столбец с тем, что выбрано-->
-                <td id="total" class="content_td">
-
-                </td>
-
-            </tr>
-        </table>
-
-
-        <!--<p:commandButton id="showDialogButton" type="button" value="#{msgs.chooseSizes}" onclick="dlg.show()"/>-->
-
-        <!--<p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false" modal="true">-->
-        <!--<h:form id="form">-->
-        <!--<div style="margin: auto; width: 300px">-->
-        <!--<div>-->
-
-        <!--<h3>Укажите ваши размеры в сантиметрах</h3>-->
-        <!--<h:panelGroup>-->
-        <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
-        <!--<h:outputText value="#{msgs.height}"/>-->
-        <!--<p:inputText id="height" value="#{user.height}"/>-->
-        <!--<p:slider for="height" minValue="100" maxValue="250"/>-->
-        <!--</h:panelGrid>-->
-        <!--</h:panelGroup>-->
-
-        <!--<h:panelGroup>-->
-        <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
-        <!--<h:outputText value="#{msgs.siski}"/>-->
-        <!--<p:inputText id="siski" value="#{user.siski}"/>-->
-        <!--<p:slider for="siski" minValue="50" maxValue="200"/>-->
-        <!--</h:panelGrid>-->
-        <!--</h:panelGroup>-->
-
-        <!--<h:panelGroup>-->
-        <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
-        <!--<h:outputText value="#{msgs.puzo}"/>-->
-        <!--<p:inputText id="puzo" value="#{user.puzo}"/>-->
-        <!--<p:slider for="puzo" minValue="30" maxValue="200"/>-->
-        <!--</h:panelGrid>-->
-        <!--</h:panelGroup>-->
-
-        <!--<h:panelGroup>-->
-        <!--<h:panelGrid columns="1" style="margin-bottom:10px">-->
-        <!--<h:outputText value="#{msgs.zhopa}"/>-->
-        <!--<p:inputText id="zhopa" value="#{user.zhopa}"/>-->
-        <!--<p:slider for="zhopa" minValue="50" maxValue="200"/>-->
-        <!--</h:panelGrid>-->
-        <!--</h:panelGroup>-->
+                            <h:panelGroup>
+                                <h:panelGrid columns="1" style="margin-bottom:10px">
+                                    <h:outputText value="#{msgs.zhopa}"/>
+                                    <p:inputText id="zhopa" value="#{user.zhopa}"/>
+                                    <p:slider for="zhopa" minValue="50" maxValue="200"/>
+                                </h:panelGrid>
+                            </h:panelGroup>
 
 
-        <!--</div>-->
-        <!--</div>-->
+                        </div>
+                    </div>
 
 
-        <!--<p:commandButton id="submitButton" value="#{msgs.next}" update=":display" oncomplete="dlg.hide();"/>-->
+                    <p:commandButton id="submitButton" value="#{msgs.next}" oncomplete="dlg.hide();" action="choose_clothes?faces-redirect=true"/>
 
-        <!--</h:form>-->
-        <!--</p:dialog>-->
+                </h:form>
+            </p:dialog>
 
 
-        <h:inputHidden id="shirtPuttedOn" value="false"/>
-        <h:inputHidden id="jeansPuttedOn" value="false"/>
-        <h:inputHidden id="coatPuttedOn" value="false"/>
+
+
 
         <script type="text/javascript">
             $(document).ready(function () {
                 dlg.show();
             });
 
-            function dressGirl(clothesName, category) {
-                checkCategory(category, "Shirts", "shirtPuttedOn");
-                checkCategory(category, "Jeans", "jeansPuttedOn");
-                checkCategory(category, "Coats", "coatPuttedOn");
-                $("img[src$='" + clothesName + ".png']").show();
 
-            }
-
-
-            function checkCategory(category, categoryname, hiddenFieldName) {
-
-                if (category == categoryname) {
-                    if ($("#" + hiddenFieldName).val() == "true") {
-                        $("." + categoryname).each(function (i, obj) {
-                            $(this).hide();
-                        });
-                    }
-                    else {
-                        $("#" + hiddenFieldName).val("true");
-                    }
-                }
-            }
         </script>
     </ui:define>
 </ui:composition>
