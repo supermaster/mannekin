@@ -11,59 +11,73 @@
     <ui:define name="content">
 
 
+        <!--<p:commandButton id="showDialogButton" type="button" value="#{msgs.chooseSizes}" onclick="dlg.show()"/>-->
+        <p:dialog header="Your sizes" widgetVar="dlg" resizable="false">
+            <h:form id="form">
+                <div style="margin: auto; width: 300px">
+                    <div>
+
+                        <h3>Укажите ваши размеры</h3>
+                        <h:panelGrid columns="2" style="margin-bottom:10px">
+
+                            <h:outputText value="Choose your gender:"/>
+                            <p:selectOneRadio id="options" value="#{user.gender}">
+                                <f:selectItem itemLabel="Female" itemValue="1"/>
+                                <f:selectItem itemLabel="Male" itemValue="2"/>
+                            </p:selectOneRadio>
+
+                        </h:panelGrid>
+
+                        <p:selectOneMenu value="#{user.selectedBrendIndex}" effect="fold">
+                            <f:selectItem itemLabel="Chose your favourite brand" itemValue=""/>
+                            <f:selectItem itemLabel="Addidas" itemValue="1"/>
+                            <f:selectItem itemLabel="Nike" itemValue="2"/>
+                            <f:selectItem itemLabel="Hugo Boss" itemValue="3"/>
+                        </p:selectOneMenu>
 
 
-            <!--<p:commandButton id="showDialogButton" type="button" value="#{msgs.chooseSizes}" onclick="dlg.show()"/>-->
-            <p:dialog header="Enter FirstName" widgetVar="dlg" resizable="false">
-                <h:form id="form">
-                    <div style="margin: auto; width: 300px">
-                        <div>
+                        <h:panelGroup>
+                            <h:panelGrid columns="1" style="margin-bottom:10px">
+                                <h:outputText value="#{msgs.height}"/>
+                                <p:inputText id="height" value="#{user.height}"/>
+                                <p:slider for="height" minValue="100" maxValue="250"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
-                            <h3>Укажите ваши размеры в сантиметрах</h3>
-                            <h:panelGroup>
-                                <h:panelGrid columns="1" style="margin-bottom:10px">
-                                    <h:outputText value="#{msgs.height}"/>
-                                    <p:inputText id="height" value="#{user.height}"/>
-                                    <p:slider for="height" minValue="100" maxValue="250"/>
-                                </h:panelGrid>
-                            </h:panelGroup>
+                        <h:panelGroup>
+                            <h:panelGrid columns="1" style="margin-bottom:10px">
+                                <h:outputText value="#{msgs.siski}"/>
+                                <p:inputText id="siski" value="#{user.siski}"/>
+                                <p:slider for="siski" minValue="50" maxValue="200"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
-                            <h:panelGroup>
-                                <h:panelGrid columns="1" style="margin-bottom:10px">
-                                    <h:outputText value="#{msgs.siski}"/>
-                                    <p:inputText id="siski" value="#{user.siski}"/>
-                                    <p:slider for="siski" minValue="50" maxValue="200"/>
-                                </h:panelGrid>
-                            </h:panelGroup>
+                        <h:panelGroup>
+                            <h:panelGrid columns="1" style="margin-bottom:10px">
+                                <h:outputText value="#{msgs.puzo}"/>
+                                <p:inputText id="puzo" value="#{user.puzo}"/>
+                                <p:slider for="puzo" minValue="30" maxValue="200"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
-                            <h:panelGroup>
-                                <h:panelGrid columns="1" style="margin-bottom:10px">
-                                    <h:outputText value="#{msgs.puzo}"/>
-                                    <p:inputText id="puzo" value="#{user.puzo}"/>
-                                    <p:slider for="puzo" minValue="30" maxValue="200"/>
-                                </h:panelGrid>
-                            </h:panelGroup>
-
-                            <h:panelGroup>
-                                <h:panelGrid columns="1" style="margin-bottom:10px">
-                                    <h:outputText value="#{msgs.zhopa}"/>
-                                    <p:inputText id="zhopa" value="#{user.zhopa}"/>
-                                    <p:slider for="zhopa" minValue="50" maxValue="200"/>
-                                </h:panelGrid>
-                            </h:panelGroup>
+                        <h:panelGroup>
+                            <h:panelGrid columns="1" style="margin-bottom:10px">
+                                <h:outputText value="#{msgs.zhopa}"/>
+                                <p:inputText id="zhopa" value="#{user.zhopa}"/>
+                                <p:slider for="zhopa" minValue="50" maxValue="200"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
 
-                        </div>
                     </div>
+                </div>
 
 
-                    <p:commandButton id="submitButton" value="#{msgs.next}" oncomplete="dlg.hide();" action="choose_clothes?faces-redirect=true"/>
+                <p:commandButton id="submitButton" value="#{msgs.next}" oncomplete="dlg.hide();"
+                                 action="choose_clothes?faces-redirect=true"/>
 
-                </h:form>
-            </p:dialog>
-
-
-
+            </h:form>
+        </p:dialog>
 
 
         <script type="text/javascript">

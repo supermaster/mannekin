@@ -15,7 +15,7 @@
                     <!--Столбец с одеждой-->
                     <td id="choose_dress" class="content_td">
 
-                        <p:accordionPanel value="#{dressBean.dressCategories}" var="category" multiple="true">
+                        <p:accordionPanel value="#{dressBean.dressCategories}" var="category">
                             <p:tab title="#{category.label}">
 
 
@@ -26,7 +26,7 @@
                                             <h:graphicImage id="item"
                                                             url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
                                             <h:outputText value="#{clothesItem.label}"/>
-                                            <h:outputText value="Price: $100"/>
+                                            <h:outputText value="$#{clothesItem.price}"/>
                                         </h:panelGrid>
                                         <!--<p:draggable for="item" containment="parent" />-->
 
@@ -67,26 +67,28 @@
                         <ui:param id="var1" name="myVar1" value="xxx" />
                         <ui:param id="var2" name="myVar2" value="yyy" />
 
-                        <script type="text/javascript">
 
-                        </script>
 
                         <f:ajax listener="#{user.userAdd( myVar1 )}" render="total"/>
                     </h:commandButton>
+
+
+
                     <!--Столбец с тем, что выбрано-->
                     <h:panelGrid id="total" class="content_td">
+
+
                         <h:outputText value="Your sizes:" style="font-weight:bold"/>
                         <h:outputText value="Shirt size: #{user.getShirtSize()}"/>
                         <h:outputText value="Jeans size: #{user.getJeansSize()}"/>
 
-                        <h:outputText value="Your purchases" style="font-weight:bold"/>
-                        <ui:repeat value="#{user.purchases}" var="purchase">
-                            <h:panelGrid>
-                                <h:outputText value="Size: #{purchase.size}"/>
-                                <h:outputText value="Price: #{purchase.price}$"/>
-                            </h:panelGrid>
+                        <h:outputText value="Your purchases:" style="font-weight:bold"/>
+
+                        <ui:repeat value="#{user.result}" var="item">
+                            <h:outputText value="#{item}"/><br/>
+
                         </ui:repeat>
-                        <h:outputText id="totals" value="Total: #{user.purchasesTotal}" style="font-weight:bold"/>
+                        <h:outputText id="totals" value="Total: $#{user.totalPrise}" style="font-weight:bold"/>
                         <p:message id="iconMessage" for="totals"/>
                     </h:panelGrid>
 

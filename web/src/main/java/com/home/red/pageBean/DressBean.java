@@ -22,21 +22,21 @@ public class    DressBean implements Serializable {
         this.dressCategories = new ArrayList<DressCategory>();
 
         List<Clothes> clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("GreenShirt", "green_shirt"));
-        clothesList.add(new Clothes("WhiteShirt", "white_shirt"));
-        clothesList.add(new Clothes("RedShirt", "red_shirt"));
+        clothesList.add(new Clothes("GreenShirt", "green_shirt", 150));
+        clothesList.add(new Clothes("WhiteShirt", "white_shirt", 100));
+        clothesList.add(new Clothes("RedShirt", "red_shirt", 80));
         dressCategories.add(new DressCategory("Shirts", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("BlueJeans", "blue_jeans"));
-        clothesList.add(new Clothes("BlueSkirt", "blue_skirt"));
-        clothesList.add(new Clothes("PurpleJeans", "purple_jeans"));
+        clothesList.add(new Clothes("BlueJeans", "blue_jeans", 50));
+        clothesList.add(new Clothes("BlueSkirt", "blue_skirt",60));
+        clothesList.add(new Clothes("PurpleJeans", "purple_jeans",70));
         dressCategories.add(new DressCategory("Jeans", clothesList));
 
         clothesList = new ArrayList<Clothes>();
-        clothesList.add(new Clothes("BlueCoat", "blue_coat"));
-        clothesList.add(new Clothes("WhiteCoat", "white_coat"));
-        clothesList.add(new Clothes("YellowCoat", "yellow_coat"));
+        clothesList.add(new Clothes("BlueCoat", "blue_coat",200));
+        clothesList.add(new Clothes("WhiteCoat", "white_coat",180));
+        clothesList.add(new Clothes("YellowCoat", "yellow_coat",220));
         dressCategories.add(new DressCategory("Coats", clothesList));
     }
 
