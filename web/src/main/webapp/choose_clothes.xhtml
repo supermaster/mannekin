@@ -3,135 +3,245 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://java.sun.com/jsf/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-    <ui:define name="windowTitle">
-        #{msgs.siteTitle}
-    </ui:define>
+                xmlns:f="http://java.sun.com/jsf/core">
+<ui:define name="windowTitle">
+    #{msgs.siteTitle}
+</ui:define>
 
-    <ui:define name="content">
-        <h:form prependId="false">
-            <table id="mainContent">
-                <tr>
-                    <!--Столбец с одеждой-->
-                    <td id="choose_dress" class="content_td">
+<ui:define name="content">
+<h:form prependId="false">
+    <table id="mainContent">
+        <tr>
+            <!--Столбец с одеждой-->
+            <td id="choose_dress" class="content_td">
 
-                        <p:accordionPanel value="#{dressBean.dressCategories}" var="category">
-                            <p:tab title="#{category.label}">
-
-
-                                <ui:repeat value="#{category.clothesList}" var="clothesItem">
-                                    <div class="likeLink"
-                                         ondragend="dressGirl('#{clothesItem.image}', '#{category.label}')">
-                                        <h:panelGrid columns="1">
-                                            <h:graphicImage id="item"
-                                                            url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
-                                            <h:outputText value="#{clothesItem.label}"/>
-                                            <h:outputText value="$#{clothesItem.price}"/>
-                                        </h:panelGrid>
-                                        <!--<p:draggable for="item" containment="parent" />-->
-
-                                        <br/><br/>
-                                    </div>
-                                </ui:repeat>
+                <p:accordionPanel value="#{dressBean.dressCategories}" var="category">
+                    <p:tab title="#{category.label}">
 
 
-                            </p:tab>
-                        </p:accordionPanel>
+                        <ui:repeat value="#{category.clothesList}" var="clothesItem">
+                            <div class="likeLink"
+                                 ondragend="dressGirl('#{clothesItem.image}', '#{category.label}')">
+                                <h:panelGrid columns="1">
+                                    <h:graphicImage id="item"
+                                                    url="/resources/img/clothes/#{clothesItem.image}_thumb.jpg"/>
+                                    <h:outputText value="#{clothesItem.label}"/>
+                                    <h:outputText value="$#{clothesItem.price}"/>
+                                </h:panelGrid>
+                                <!--<p:draggable for="item" containment="parent" />-->
 
-                    </td>
-
-                    <!--Столбец с самим манекеном-->
-                    <td id="maneken" class="content_td" style="text-align: center; height: 700px">
-
-                        <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"
-                                        style="position: absolute; left: 500px; top:10px;"/>
-
-                        <!--СКРЫТЫЕ ШМОТКИ!!!-->
-                        <ui:repeat value="#{dressBean.dressCategories}" var="item">
-                            <ui:repeat value="#{item.clothesList}" var="cloth">
-                                <h:graphicImage url="/resources/img/clothes/#{cloth.image}.png"
-                                                styleClass="#{item.label}"
-                                                style="display: none; position: absolute; left: 500px; top:10px;"
-                                                width="260" height="679"/>
-                            </ui:repeat>
-
+                                <br/><br/>
+                            </div>
                         </ui:repeat>
-                    </td>
 
 
-                    <h:inputHidden id="shirtPuttedOn" name="fuck" value="false"/>
-                    <h:inputHidden id="jeansPuttedOn" value="false"/>
-                    <h:inputHidden id="coatPuttedOn" value="false"/>
-                    <!--чудо-кнопка-->
-                    <h:commandButton id="ADD_USERS_PURCHASE" style="display:none">
-                        <ui:param id="var1" name="myVar1" value="xxx" />
-                        <ui:param id="var2" name="myVar2" value="yyy" />
+                    </p:tab>
+                </p:accordionPanel>
+
+            </td>
+
+            <!--Столбец с самим манекеном-->
+            <td id="maneken" class="content_td" style="text-align: center; height: 700px">
+
+                <h:graphicImage id="empty_model" url="/resources/img/empty_model.png" width="260" height="679"
+                                style="position: absolute; left: 500px; top:10px;"/>
+                <h:graphicImage id="empty_model_fat" url="/resources/img/empty_model_fat.png" width="260" height="679"
+                                style="position: absolute; left: 500px; top:10px; display: none;"/>
+
+                <!--СКРЫТЫЕ ШМОТКИ!!!-->
+                <ui:repeat value="#{dressBean.dressCategories}" var="item">
+                    <ui:repeat value="#{item.clothesList}" var="cloth">
+                        <h:graphicImage url="/resources/img/clothes/#{cloth.image}.png"
+                                        styleClass="#{item.label}"
+                                        style="display: none; position: absolute; left: 500px; top:10px;"
+                                        width="260" height="679"/>
+                    </ui:repeat>
+
+                </ui:repeat>
+                <!--пара вещей для переделанной толстой девки-->
 
 
-
-                        <f:ajax listener="#{user.userAdd( myVar1 )}" render="total"/>
-                    </h:commandButton>
-
-
-
-                    <!--Столбец с тем, что выбрано-->
-                    <h:panelGrid id="total" class="content_td">
-
-
-                        <h:outputText value="Your sizes:" style="font-weight:bold"/>
-                        <h:outputText value="Shirt size: #{user.getShirtSize()}"/>
-                        <h:outputText value="Jeans size: #{user.getJeansSize()}"/>
-
-                        <h:outputText value="Your purchases:" style="font-weight:bold"/>
-
-                        <ui:repeat value="#{user.result}" var="item">
-                            <h:outputText value="#{item}"/><br/>
-
-                        </ui:repeat>
-                        <h:outputText id="totals" value="Total: $#{user.totalPrise}" style="font-weight:bold"/>
-                        <p:message id="iconMessage" for="totals"/>
-                    </h:panelGrid>
-
-                </tr>
-            </table>
+                <h:graphicImage url="/resources/img/clothes/purple_jeans_fat.png"
+                                styleClass="Shirts"
+                                style="display: none; position: absolute; left: 500px; top:10px;"
+                                width="260" height="679"/>
+                <h:graphicImage url="/resources/img/clothes/green_shirt_fat.png"
+                                styleClass="Shirts"
+                                style="display: none; position: absolute; left: 500px; top:10px;"
+                                width="260" height="679"/>
+                <h:graphicImage url="/resources/img/clothes/blue_coat_fat.png"
+                                styleClass="Shirts"
+                                style="display: none; position: absolute; left: 500px; top:10px;"
+                                width="260" height="679"/>
+            </td>
 
 
-        </h:form>
+            <h:inputHidden id="shirtPuttedOn" name="fuck" value="false"/>
+            <h:inputHidden id="jeansPuttedOn" value="false"/>
+            <h:inputHidden id="coatPuttedOn" value="false"/>
+            <!--чудо-кнопка-->
+            <h:commandButton id="ADD_USERS_PURCHASE" style="display:none">
+                <ui:param id="var1" name="myVar1" value="xxx"/>
+                <ui:param id="var2" name="myVar2" value="yyy"/>
 
 
+                <f:ajax listener="#{user.userAdd( myVar1 )}" render="total"/>
+            </h:commandButton>
 
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                dlg.show();
-            });
-
-            function dressGirl(clothesName, category) {
-                checkCategory(category, "Shirts", "shirtPuttedOn");
-                checkCategory(category, "Jeans", "jeansPuttedOn");
-                checkCategory(category, "Coats", "coatPuttedOn");
-                $("img[src$='" + clothesName + ".png']").show();
+            <!--Столбец с тем, что выбрано-->
+            <h:panelGrid id="total" class="content_td">
 
 
+                <h:outputText value="Your sizes:" style="font-weight:bold"/>
+                <h:outputText value="Shirt size: #{user.getShirtSize()}"/>
+                <h:outputText value="Jeans size: #{user.getJeansSize()}"/>
+
+                <h:outputText value="Your purchases:" style="font-weight:bold"/>
+
+                <ui:repeat value="#{user.result}" var="item" id="purchases">
+                    <h:outputText value="#{item}"/><br/>
+
+                </ui:repeat>
+                <h:outputText id="totals" value="Total: $#{user.totalPrise}" style="font-weight:bold"/>
+                <p:message id="iconMessage" for="totals"/>
+            </h:panelGrid>
+
+        </tr>
+    </table>
 
 
-                $("#ADD_USERS_PURCHASE").click();
+</h:form>
+
+
+<h:panelGrid columns="1">
+    <p:commandButton id="undressGirl" value="Undress model" onclick="undressGirl()" type="button"
+                     style="left: 270px; margin-top:30px;"/>
+
+    <p:commandButton id="basic" value="Change model sizes" onclick="dlg1.show();" type="button"
+                     style="left: 270px; margin-top:10px;"/>
+</h:panelGrid>
+
+<h:inputHidden id="isGirlFat" value="0"/>
+
+<p:dialog id="sizeDialog" header="Change size" widgetVar="dlg1" style="display: none; position: absolute; left: 880px;">
+    <div style="margin: auto; width: 300px">
+        <div>
+
+            <p:selectOneMenu value="#{user.selectedBrendIndex}" effect="fold" style="width: 150px;">
+                <f:selectItem itemLabel="Chose your favourite brand" itemValue="" style="font-weight:bold"/>
+                <f:selectItem itemLabel="Addidas" itemValue="1"/>
+                <f:selectItem itemLabel="Nike" itemValue="2"/>
+                <f:selectItem itemLabel="Hugo Boss" itemValue="3"/>
+            </p:selectOneMenu>
+
+
+            <h:panelGrid columns="2" style="margin-bottom:10px">
+
+                <h:outputText value="Choose your gender:" style="font-weight:bold"/>
+                <p:selectOneRadio id="options" value="#{user.gender}">
+                    <f:selectItem itemLabel="Female" itemValue="1"/>
+                    <f:selectItem itemLabel="Male" itemValue="2"/>
+                </p:selectOneRadio>
+
+            </h:panelGrid>
+
+            <h:outputText value="Choose your proportions" style="font-weight:bold"/>
+
+            <h:panelGroup>
+                <h:panelGrid columns="1" style="margin-bottom:10px">
+                    <h:outputText value="#{msgs.height}" style="font-weight:bold"/>
+                    <p:inputText id="height" value="#{user.height}"/>
+                    <p:slider for="height" minValue="100" maxValue="250"/>
+                </h:panelGrid>
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <h:panelGrid columns="1" style="margin-bottom:10px">
+                    <h:outputText value="#{msgs.siski}" style="font-weight:bold"/>
+                    <p:inputText id="siski" value="#{user.siski}"/>
+                    <p:slider for="siski" minValue="50" maxValue="200"/>
+                </h:panelGrid>
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <h:panelGrid columns="1" style="margin-bottom:10px">
+                    <h:outputText value="#{msgs.puzo}" style="font-weight:bold"/>
+                    <p:inputText id="puzo" value="#{user.puzo}"/>
+                    <p:slider for="puzo" minValue="30" maxValue="200"/>
+                </h:panelGrid>
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <h:panelGrid columns="1" style="margin-bottom:10px">
+                    <h:outputText value="#{msgs.zhopa}" style="font-weight:bold"/>
+                    <p:inputText id="zhopa" value="#{user.zhopa}"/>
+                    <p:slider for="zhopa" minValue="50" maxValue="200"/>
+                </h:panelGrid>
+            </h:panelGroup>
+
+
+        </div>
+    </div>
+    <input type="button" onclick="changeGirl()" value="Ok"/>
+</p:dialog>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        dlg.show();
+    });
+
+    function changeGirl() {
+        $("img[src$='empty_model.png']").hide();
+        $("img[src$='empty_model_fat.png']").show();
+
+        $("#isGirlFat").val("1");
+        dlg1.hide();
+    }
+
+    function dressGirl(clothesName, category) {
+        checkCategory(category, "Shirts", "shirtPuttedOn");
+        checkCategory(category, "Jeans", "jeansPuttedOn");
+        checkCategory(category, "Coats", "coatPuttedOn");
+        var suffix;
+        if (isGirlFat()) {
+            suffix = "_fat";
+        } else {
+            suffix = "";
+        }
+        $("img[src$='" + clothesName + suffix + ".png']").show();
+
+        $("#ADD_USERS_PURCHASE").click();
+    }
+
+    function undressGirl() {
+        $("img[src$='red_shirt.png']").hide();
+        $("img[src$='purple_jeans.png']").hide();
+        $("img[src$='white_coat.png']").hide();
+        //раздели девку, теперь она станет толстой
+        $("#isGirlFat").val("1");
+
+    }
+
+    function isGirlFat() {
+        return $("#isGirlFat").val() === "1";
+    }
+
+
+    function checkCategory(category, categoryname, hiddenFieldName) {
+
+        if (category == categoryname) {
+            if ($("#" + hiddenFieldName).val() == "true") {
+                $("." + categoryname).each(function (i, obj) {
+                    $(this).hide();
+                });
             }
-
-
-            function checkCategory(category, categoryname, hiddenFieldName) {
-
-                if (category == categoryname) {
-                    if ($("#" + hiddenFieldName).val() == "true") {
-                        $("." + categoryname).each(function (i, obj) {
-                            $(this).hide();
-                        });
-                    }
-                    else {
-                        $("#" + hiddenFieldName).val("true");
-                    }
-                }
+            else {
+                $("#" + hiddenFieldName).val("true");
             }
-        </script>
-    </ui:define>
+        }
+    }
+</script>
+</ui:define>
 </ui:composition>

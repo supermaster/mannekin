@@ -186,6 +186,30 @@ public class UserBean implements Serializable {
 
             }
 
+            //Поменяли модель
+            case 9:{
+                result.add("Green Shirt ($100)");
+                totalPrise = 150;
+                break;
+            }
+
+            case 10:{
+                result.add("Green Shirt ($100)");
+                result.add("Purple Jeans ($70)");
+                totalPrise = 170;
+                break;
+            }
+
+            case 11:{
+                result.add("Green Shirt ($100)");
+                result.add("Purple Jeans ($70)");
+                result.add("Blue Coat ($200)");
+                totalPrise = 370;
+                break;
+            }
+
+
+
         }
 
 
